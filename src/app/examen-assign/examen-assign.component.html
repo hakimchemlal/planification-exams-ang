@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Assigner Surveillants</h2>
+  <form (ngSubmit)="onAssign()">
+    <div class="form-group">
+      <label for="mode">Mode d'affectation</label>
+      <select [(ngModel)]="assignRequest.mode" class="form-control">
+        <option value="random">Aléatoire</option>
+        <option value="random_group">Aléatoire par groupe</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="surveillantsPerSalle">Nombre de surveillants par salle</label>
+      <input type="number" [(ngModel)]="assignRequest.surveillantsPerSalle" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Assigner</button>
+  </form>
+</div>

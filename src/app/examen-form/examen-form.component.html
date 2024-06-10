@@ -1,0 +1,165 @@
+<!--
+<div class="container">
+&lt;!&ndash;  <h2>{{ isEditMode ? 'Modifier Examen' : 'Créer Examen' }}</h2>&ndash;&gt;
+  <h2>{{ route.snapshot.paramMap.get('id') ? 'Modifier Examen' : 'Ajouter Examen' }}</h2>
+  <form [formGroup]="examenForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="elementPedagogique">Élément Pédagogique</label>
+      <select id="elementPedagogique" formControlName="elementPedagogique" class="form-control" required>
+        <option *ngFor="let element of elementsPedagogiques" [value]="element">
+          {{ element.titre }} - {{ element.niveau }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="semestre">Semestre</label>
+      <select formControlName="semestre" class="form-control">
+        <option value="printemps">Printemps</option>
+        <option value="automne">Automne</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="session">Session</label>
+      <select formControlName="session" class="form-control">
+        <option value="normale">Normale</option>
+        <option value="rattrapage">Rattrapage</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="type">Type</label>
+      <select formControlName="type" class="form-control">
+        <option value="devoir_surveille_1">Devoir surveillé 1</option>
+        <option value="devoir_surveille_2">Devoir surveillé 2</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" formControlName="date" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="heureDebut">Heure de début</label>
+      <input type="time" formControlName="heureDebut" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="dureePrevue">Durée prévue</label>
+      <input type="text" formControlName="dureePrevue" class="form-control" />
+    </div>
+
+    &lt;!&ndash;<div class="form-group">
+      <label for="coordonnateur">Coordonnateur</label>
+      <input type="text" id="coordonnateur" formControlName="coordonnateurs" class="form-control" />
+    </div>&ndash;&gt;
+
+    <div class="form-group">
+      <label for="coordonnateur">Coordonnateur:</label>
+      <select class="form-control" id="coordonnateur" formControlName="coordonnateurs">
+        <option *ngFor="let personnel of personnels" [value]="personnel.id">{{personnel.nom}} {{personnel.prenom}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="lieux">Lieux d'examen</label>
+      <input type="text" formControlName="lieu" class="form-control" placeholder="Séparez les noms des salles par des virgules" />
+    </div>
+
+    <div class="form-group">
+      <label for="anneeUniversitaire">Année universitaire</label>
+      <input type="text" formControlName="anneeUniversitaire" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="epreuve">Epreuve</label>
+      <input type="file" (change)="onFileChange($event, 'epreuve')" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="pv">Procès-verbal</label>
+      <input type="file" (change)="onFileChange($event, 'pv')" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="rapportTextuelle">Rapport textuelle</label>
+      <textarea formControlName="rapport" class="form-control"></textarea>
+    </div>
+
+&lt;!&ndash;    <button type="submit" class="btn btn-primary">{{ isEditMode ? 'Modifier' : 'Créer' }}</button>&ndash;&gt;
+    <button type="submit" class="btn btn-primary">{{ route.snapshot.paramMap.get('id') ? 'Modifier' : 'Ajouter' }}</button>
+
+  </form>
+</div>
+-->
+<div class="container">
+  <h2>{{ route.snapshot.paramMap.get('id') ? 'Modifier Examen' : 'Ajouter Examen' }}</h2>
+  <form [formGroup]="examenForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="elementPedagogique">Élément Pédagogique</label>
+      <select id="elementPedagogique" formControlName="elementPedagogique" class="form-control" required>
+        <option *ngFor="let element of elementsPedagogiques" [value]="element.id">
+          {{ element.titre }} - {{ element.niveau }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="semestre">Semestre</label>
+      <input type="text" formControlName="semestre" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="session">Session</label>
+      <select id="session" formControlName="session" class="form-control">
+        <option value="Normale">Normale</option>
+        <option value="Rattrapage">Rattrapage</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="type">Type</label>
+      <select formControlName="type" class="form-control">
+        <option value="Devoir surveillé 1">Devoir surveillé 1</option>
+        <option value="Devoir surveillé 2">Devoir surveillé 2</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input type="date" formControlName="date" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="heureDebut">Heure de début</label>
+      <input type="time" formControlName="heureDebut" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="dureePrevue">Durée prévue</label>
+      <input type="text" formControlName="dureePrevu" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="coordonnateur">Coordonnateur:</label>
+      <select class="form-control" id="coordonnateur" formControlName="coordonnateurs">
+        <option *ngFor="let personnel of personnels" [value]="personnel.id">{{personnel.nom}} {{personnel.prenom}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="lieuExamen">Lieux d'examen</label>
+      <input type="text" formControlName="lieux" class="form-control" placeholder="Séparez les noms des salles par des virgules" />
+    </div>
+    <div class="form-group">
+      <label for="anneeUniversitaire">Année universitaire</label>
+      <input type="text" formControlName="anneeUniversitaire" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="epreuve">Epreuve</label>
+      <input type="file" (change)="onFileChange($event, 'epreuve')" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="pv">Procès-verbal</label>
+      <input type="file" (change)="onFileChange($event, 'pv')" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="rapportTextuel">Rapport textuel</label>
+      <textarea formControlName="rapportTextuel" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">{{ route.snapshot.paramMap.get('id') ? 'Modifier' : 'Ajouter' }}</button>
+  </form>
+</div>

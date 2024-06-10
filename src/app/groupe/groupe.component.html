@@ -1,0 +1,38 @@
+<div class="container">
+  <h1>Groupes d'Enseignants</h1>
+
+  <!-- Formulaire pour créer ou mettre à jour un groupe -->
+  <form [formGroup]="groupeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nom">Nom du groupe:</label>
+      <input type="text" class="form-control" id="nom" formControlName="nom">
+    </div>
+    <div class="form-group">
+      <label for="membres">IDs des membres (séparés par des virgules):</label>
+      <input type="text" class="form-control" id="membres" formControlName="membres">
+    </div>
+    <button type="submit" class="btn btn-primary">{{ selectedGroupe ? 'Ajouter membres' : 'Ajouter' }}</button>
+    <button type="button" class="btn btn-secondary" (click)="resetForm()" *ngIf="selectedGroupe">Annuler</button>
+  </form>
+
+  <!-- Table pour afficher la liste des groupes -->
+  <table class="table mt-4">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Membres</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let groupe of groupes">
+      <td>{{ groupe.nom }}</td>
+      <td>{{ getMembreNomPrenom(groupe.membres) }}</td>
+      <td>
+        <button class="btn btn-warning" (click)="editGroupe(groupe)">Ajouter membres</button>
+        <button class="btn btn-danger" (click)="deleteGroupe(groupe.id)">Supprimer</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

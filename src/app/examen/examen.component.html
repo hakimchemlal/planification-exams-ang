@@ -1,0 +1,71 @@
+<div class="affichage">
+  <h2>Liste des Examens</h2>
+  <button class="btn btn-primary" (click)="navigateToAdd()">Ajouter Examen</button>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Date de l'examen</th>
+      <th>Heure de Début</th>
+      <th>Coordonnateurs</th>
+      <th>Durée prévue</th>
+      <th>Durée Réelle</th>
+      <th>Lieu d'Examen</th>
+      <th>Surveillants</th>
+      <th>Contrôleurs d'Absence</th>
+      <th>Année Universitaire</th>
+      <th>Epreuve</th>
+      <th>PV</th>
+      <th>Rapport Textuel</th>
+      <th>Type</th>
+      <th>Session</th>
+      <th>Élément Pédagogique</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let examen of examens">
+      <td *ngIf=" examen.date">{{ examen.date.split('T')[0] }}</td>
+      <td *ngIf=" !examen.date">modifier dans BDD</td>
+      <td>{{ examen?.heureDebut }}</td>
+<!--      <td>{{ examen?.coordonnateurs.join(', ') }}</td>-->
+      <td>{{ getMembreNomPrenom(examen?.coordonnateurs) }}</td>
+<!--      <td>{{examen?.coordonnateurs}}</td>-->
+      <td>{{ examen?.dureePrevu }}</td>
+      <td>{{ examen?.dureeReelle }}</td>
+      <td>
+        <ul>
+          <li *ngFor="let salle of examen?.lieux">
+            {{ salle.nom }} ({{ salle.capacite }})
+          </li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li *ngFor="let surveillant of examen?.surveillants">
+            {{ surveillant.nom }} {{ surveillant.prenom }}
+          </li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li *ngFor="let controleur of examen?.controleurs">
+            {{ controleur.nom }} {{ controleur.prenom }}
+          </li>
+        </ul>
+      </td>
+      <td>{{ examen?.anneeUniversitaire }}</td>
+      <td>{{ examen?.epreuve }}</td>
+      <td>{{ examen?.pv }}</td>
+      <td>{{ examen?.rapport }}</td>
+      <td>{{ examen?.type }}</td>
+      <td>{{ examen?.session }}</td>
+      <td>{{ examen?.elementPedagogique?.titre }} - {{ examen?.elementPedagogique?.niveau }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="editExamen(examen?.id)">Modifier</button>
+        <button class="btn btn-danger" (click)="deleteExamen(examen?.id)">Supprimer</button>
+        <button class="btn btn-secondary" (click)="navigateToAssign(examen?.id)">Assigner Surveillants</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
